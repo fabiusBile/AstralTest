@@ -13,7 +13,7 @@ using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace Database.Controllers
 {
-    public class EmploymentTypes: ODataController
+    public class EmploymentTypes : ODataController
     {
         private readonly VacanciesContext db = new VacanciesContext();
 
@@ -41,7 +41,7 @@ namespace Database.Controllers
             db.SaveChanges();
             return NoContent();
         }
-        
+
         [EnableQuery]
         public IActionResult Post([FromBody] EmploymentType EmploymentType)
         {
@@ -57,14 +57,7 @@ namespace Database.Controllers
 
             db.Entry(EmploymentType).State = state;
             db.SaveChanges();
-//            if (state == EntityState.Added)
-//            {
-                return Created(EmploymentType);
-//            }
-//            else
-//            {
-//                return Updated(EmploymentType);
-//            }
+            return Created(EmploymentType);
         }
     }
 }
