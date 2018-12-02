@@ -3,15 +3,17 @@ using System;
 using Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Database.Migrations
 {
     [DbContext(typeof(VacanciesContext))]
-    partial class VacanciesContextModelSnapshot : ModelSnapshot
+    [Migration("20181202153841_ChangeStringLengths")]
+    partial class ChangeStringLengths
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,9 +54,10 @@ namespace Database.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ContactPerson")
-                        .HasMaxLength(255);
+                        .HasMaxLength(63);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasMaxLength(5000);
 
                     b.Property<string>("EmployerId");
 

@@ -3,15 +3,17 @@ using System;
 using Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Database.Migrations
 {
     [DbContext(typeof(VacanciesContext))]
-    partial class VacanciesContextModelSnapshot : ModelSnapshot
+    [Migration("20181202170616_RemoveDescriptionMaxLength")]
+    partial class RemoveDescriptionMaxLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

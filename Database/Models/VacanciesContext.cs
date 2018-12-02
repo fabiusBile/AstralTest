@@ -9,7 +9,7 @@ namespace Database.Models
     
     public partial class VacanciesContext : DbContext
     {
-        private readonly string _dbPassword = Environment.GetEnvironmentVariable("SA_PASSWORD");
+        private readonly string _dbPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
         private readonly string _dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
         
         public VacanciesContext()
@@ -25,7 +25,8 @@ namespace Database.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer($@"Server={_dbServer};Persist Security Info=True;User ID=SA;Password={_dbPassword};");
+                optionsBuilder.UseNpgsql($"User ID=postgres;Password={_dbPassword};Host={_dbServer};Port=5432;Database=AstralTest;Pooling=true;");
+//                optionsBuilder.UseSqlServer($@"Server={_dbServer};Database=AstralTest;Persist Security Info=True;User ID=SA;Password={_dbPassword};");
             }
 
         }

@@ -57,14 +57,14 @@ namespace Database.Controllers
 
             db.Entry(EmploymentType).State = state;
             db.SaveChanges();
-            if (state == EntityState.Added)
-            {
+//            if (state == EntityState.Added)
+//            {
                 return Created(EmploymentType);
-            }
-            else
-            {
-                return Updated(EmploymentType);
-            }
+//            }
+//            else
+//            {
+//                return Updated(EmploymentType);
+//            }
         }
     }
 }

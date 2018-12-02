@@ -68,14 +68,8 @@ namespace Database.Controllers
 
             db.Entry(vacancy).State = state;
             db.SaveChanges();
-            if (state == EntityState.Added)
-            {
                 return Created(vacancy);
-            }
-            else
-            {
-                return Updated(vacancy);
-            }
+           
         }
     }
 }

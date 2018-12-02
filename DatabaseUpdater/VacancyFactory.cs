@@ -5,10 +5,17 @@ using Database.Models;
 
 namespace DatabaseUpdater
 {
+    /// <summary>
+    /// Фабрика, конвертирующая объекты с HH для хранения в базе
+    /// </summary>
     public static class VacancyFactory
     {
-        
-        public static Vacancy ConvertHHVacancyToDB(HHApi.Vacancy hhVacancy)
+        /// <summary>
+        /// Конвертирует вакансии
+        /// </summary>
+        /// <param name="hhVacancy">Вакансия с HH</param>
+        /// <returns></returns>
+        public static Vacancy ConvertHHTypeToDB(HHApi.Vacancy hhVacancy)
         {
             var vacancy = new Vacancy()
             {
@@ -33,6 +40,7 @@ namespace DatabaseUpdater
                     Name = hhVacancy.Employer.Name,
                     Id = hhVacancy.Employer.Id
                 };
+                vacancy.EmployerId = hhVacancy.Employer.Id;
             }
 
             if (hhVacancy.Employment != null)
@@ -42,6 +50,7 @@ namespace DatabaseUpdater
                     Id = hhVacancy.Employment.Id,
                     Name = hhVacancy.Employment.Name
                 };
+                vacancy.TypeId = hhVacancy.Employment.Id;
             }
 
             if (hhVacancy.Salary != null)
@@ -56,6 +65,34 @@ namespace DatabaseUpdater
                 vacancy.Salary = (int) sals.Average();
             }
             return vacancy;
+        }
+
+        /// <summary>
+        /// Конвертирует работодателей
+        /// </summary>
+        /// <param name="hhEmployer"></param>
+        /// <returns></returns>
+        public static Employer ConvertHHTypeToDB(HHApi.Employer hhEmployer)
+        {
+            return new Employer()
+            {
+                Id = hhEmployer.Id,
+                Name = hhEmployer.Name
+            };
+        }
+
+        /// <summary>
+        /// Конвертирует виды занятости
+        /// </summary>
+        /// <param name="hhEmployment"></param>
+        /// <returns></returns>
+        public static EmploymentType ConvertHHTypeToDB(HHApi.Employment hhEmployment)
+        {
+            return new EmploymentType()
+            {
+                Id = hhEmployment.Id,
+                Name = hhEmployment.Name
+            };
         }
     }
 }
