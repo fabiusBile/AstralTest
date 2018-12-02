@@ -16,8 +16,8 @@ namespace DatabaseUpdater
 
         private static readonly string ServiceHost = Environment.GetEnvironmentVariable("DB_SERVICE");
         private static readonly string ServicePort = Environment.GetEnvironmentVariable("DB_SERVICE_PORT");
-
-        static void Main(string[] args)
+        private static readonly TimeSpan Duration = TimeSpan.Parse(Environment.GetEnvironmentVariable("DURATION"));
+        static void UpdateData()
         {
             Console.WriteLine($"{DateTime.Now} - Start");
 
@@ -31,13 +31,13 @@ namespace DatabaseUpdater
                 Console.WriteLine($"{DateTime.Now} - Start getting vacancies");
                 // Получаем с сайта id 50 актуальных вакансий
                 var vacancyLinks = apiClient.GetVacanciesAsync(50, HhUserAgent).Result.Items;
-                
+
 
                 // По id получаем подробную информацию о вакансиях
                 var vacancies = vacancyLinks.Select(vv => apiClient.GetVacancyAsync(vv.Id, HhUserAgent).Result)
                     .ToList();
                 Console.WriteLine($"{DateTime.Now} - Got vacancies");
-                
+
                 // Получаем работодателей из вакансий, и записываем их в базу
                 var employers = vacancies.Where(v => v.Employer != null).GroupBy(v => v.Employer.Id)
                     .Select(v => v.FirstOrDefault().Employer).ToList();
@@ -73,6 +73,18 @@ namespace DatabaseUpdater
             {
                 Console.WriteLine($"Произошла ошибка: {e.Message} {e.InnerException} {e.StackTrace}");
             }
+        }
+
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                UpdateData();
+                Console.WriteLine($"Next call in {DateTime.Now.Add(Duration)}");
+                System.Threading.Thread.Sleep(Duration);
+            } 
+
+            Console.ReadLine();
         }
     }
 }
