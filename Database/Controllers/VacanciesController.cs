@@ -18,13 +18,13 @@ namespace Database.Controllers
         private readonly VacanciesContext db = new VacanciesContext();
 
         [EnableQuery]
-        public IActionResult Get()
+        public IQueryable<Vacancy> Get()
         {
-            return Ok(db.Vacancies);
+            return db.Vacancies.AsQueryable();
         }
 
         [EnableQuery]
-        public IActionResult Get(string id)
+        public IActionResult Get([FromODataUri] string id)
         {
             return Ok(db.Vacancies.Find(id));
         }

@@ -18,15 +18,15 @@ namespace Database.Controllers
         private readonly VacanciesContext db = new VacanciesContext();
 
         [EnableQuery]
-        public IActionResult Get()
+        public async Task<IActionResult>  Get()
         {
-            return Ok(db.Employers);
+            return  Ok(db.Employers);
         }
 
         [EnableQuery]
-        public IActionResult Get(string id)
+        public async Task<IActionResult> Get(string id)
         {
-            return Ok(db.Employers.FirstOrDefault(i => i.Id == id));
+            return Ok(await db.Employers.FirstOrDefaultAsync(i => i.Id == id));
         }
 
         public IActionResult Delete(string id)
@@ -41,7 +41,7 @@ namespace Database.Controllers
             db.SaveChanges();
             return NoContent();
         }
-        
+
         [EnableQuery]
         public IActionResult Post([FromBody] Employer employer)
         {
@@ -56,17 +56,9 @@ namespace Database.Controllers
             }
 
 
-
             db.Entry(employer).State = state;
             db.SaveChanges();
-//            if (state == EntityState.Added)
-//            {
-                return Created(employer);
-//            }
-//            else
-//            {
-//                return Updated(employer);
-//            }
+            return Created(employer);
         }
     }
 }
