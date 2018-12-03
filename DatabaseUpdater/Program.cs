@@ -77,6 +77,7 @@ namespace DatabaseUpdater
 
         static void Main(string[] args)
         {
+            // Не получилось сделать нормально через крон, поэтому так :)
             while (true)
             {
                 UpdateData();

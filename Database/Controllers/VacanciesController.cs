@@ -23,10 +23,9 @@ namespace Database.Controllers
             return db.Vacancies.AsQueryable();
         }
 
-        [EnableQuery]
-        public IActionResult Get([FromODataUri] string id)
+        public IActionResult Get([FromODataUri] string key)
         {
-            return Ok(db.Vacancies.Find(id));
+            return Ok(db.Vacancies.Find(key));
         }
 
         public IActionResult Delete(string id)

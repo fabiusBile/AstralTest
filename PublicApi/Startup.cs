@@ -40,7 +40,6 @@ namespace PublicApi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

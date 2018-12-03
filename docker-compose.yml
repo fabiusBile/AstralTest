@@ -1,11 +1,22 @@
 version: "3.4"
 
 x-common-variables: &shared-variables
-  POSTGRES_PASSWORD: "A!123456a"
-  DB_SERVER: "db"
+  POSTGRES_PASSWORD: "A!123456a"  #Пароль от бд
+  DB_SERVER: "db"                 #Название сервера с бд 
+  DB_SERVICE: "database_service"  #Название сервера с службой доступа к данным
+  DB_SERVICE_PORT: 80
 services:
+  public_api:     # Веб-апи
+    build: PublicApi 
+    environment:
+      <<: *shared-variables
+      ASPNETCORE_ENVIRONMENT: "Production"
+    ports:
+    - "8080:80"
+    depends_on:
+    - database_service
   database_service:
-    build: Database
+    build: Database # Служба, работающая с бд
     environment:
       <<: *shared-variables
       ASPNETCORE_ENVIRONMENT: "Production"
@@ -13,7 +24,7 @@ services:
     - "${DB_SERVICE_PORT}:80"
     depends_on:
     - db
-  db:
+  db:    # БД
     ports:
     - "5432:5432"
     image: postgres
@@ -23,7 +34,7 @@ services:
     environment:
       <<: *shared-variables
       POSTGRES_DB: "AstralTest"
-  database_updater:
+  database_updater: # Консольная утилита, обновляющая данные с hh
     build: DatabaseUpdater
     stdin_open: true
     tty: true
@@ -31,6 +42,4 @@ services:
     - database_service
     command: tail -f /dev/null 
     environment:
-      DB_SERVICE: "database_service"
-      DB_SERVICE_PORT: 80
-      DURATION: "00:05:00"
+      DURATION: "00:30:00" # Время между обновлениями данных с hh.ru HH:MM:SS 
