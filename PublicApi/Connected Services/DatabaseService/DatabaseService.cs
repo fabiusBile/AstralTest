@@ -78,7 +78,7 @@ namespace Database.Models
         private global::Database.Models.EmploymentTypeSingle _Type;
     }
     /// <summary>
-    /// There are no comments for Vacancy in the schema.
+    /// Вакансия
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -98,7 +98,7 @@ namespace Database.Models
             return vacancy;
         }
         /// <summary>
-        /// There are no comments for Property Id in the schema.
+        /// Id 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Id
@@ -120,7 +120,7 @@ namespace Database.Models
         partial void OnIdChanging(string value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Name in the schema.
+        /// Наименование вакансии
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Name
@@ -142,7 +142,7 @@ namespace Database.Models
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
-        /// There are no comments for Property Salary in the schema.
+        /// Зарплата 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public global::System.Nullable<int> Salary
@@ -164,7 +164,7 @@ namespace Database.Models
         partial void OnSalaryChanging(global::System.Nullable<int> value);
         partial void OnSalaryChanged();
         /// <summary>
-        /// There are no comments for Property ContactPerson in the schema.
+        /// Имя контактного лица 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string ContactPerson
@@ -186,7 +186,7 @@ namespace Database.Models
         partial void OnContactPersonChanging(string value);
         partial void OnContactPersonChanged();
         /// <summary>
-        /// There are no comments for Property PhoneNumber in the schema.
+        /// Номер телефона
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string PhoneNumber
@@ -208,7 +208,7 @@ namespace Database.Models
         partial void OnPhoneNumberChanging(string value);
         partial void OnPhoneNumberChanged();
         /// <summary>
-        /// There are no comments for Property Description in the schema.
+        /// Текст вакансии 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Description
@@ -230,7 +230,7 @@ namespace Database.Models
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
         /// <summary>
-        /// There are no comments for Property EmployerId in the schema.
+        /// Id работадателя
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string EmployerId
@@ -252,7 +252,7 @@ namespace Database.Models
         partial void OnEmployerIdChanging(string value);
         partial void OnEmployerIdChanged();
         /// <summary>
-        /// There are no comments for Property TypeId in the schema.
+        /// Id вида занятости
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string TypeId
@@ -274,7 +274,7 @@ namespace Database.Models
         partial void OnTypeIdChanging(string value);
         partial void OnTypeIdChanged();
         /// <summary>
-        /// There are no comments for Property Employer in the schema.
+        /// Работадатель
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public global::Database.Models.Employer Employer
@@ -296,7 +296,7 @@ namespace Database.Models
         partial void OnEmployerChanging(global::Database.Models.Employer value);
         partial void OnEmployerChanged();
         /// <summary>
-        /// There are no comments for Property Type in the schema.
+        /// Вид занятости 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public global::Database.Models.EmploymentType Type
@@ -381,7 +381,7 @@ namespace Database.Models
         private global::Microsoft.OData.Client.DataServiceQuery<global::Database.Models.Vacancy> _Vacancies;
     }
     /// <summary>
-    /// There are no comments for Employer in the schema.
+    /// Работадатель 
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -401,7 +401,7 @@ namespace Database.Models
             return employer;
         }
         /// <summary>
-        /// There are no comments for Property Id in the schema.
+        /// Id 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Id
@@ -423,7 +423,7 @@ namespace Database.Models
         partial void OnIdChanging(string value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Name in the schema.
+        /// Наименование
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Name
@@ -530,7 +530,7 @@ namespace Database.Models
         private global::Microsoft.OData.Client.DataServiceQuery<global::Database.Models.Vacancy> _Vacancies;
     }
     /// <summary>
-    /// There are no comments for EmploymentType in the schema.
+    /// Вид занятости
     /// </summary>
     /// <KeyProperties>
     /// Id
@@ -550,7 +550,7 @@ namespace Database.Models
             return employmentType;
         }
         /// <summary>
-        /// There are no comments for Property Id in the schema.
+        /// id вида занятости из апи hh.ru 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Id
@@ -572,7 +572,7 @@ namespace Database.Models
         partial void OnIdChanging(string value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Name in the schema.
+        /// Наименование вида занятости 
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         public string Name

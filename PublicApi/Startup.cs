@@ -30,6 +30,7 @@ namespace PublicApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Тестовое задание Астрал Групп", Version = "v1" });
+                c.IncludeXmlComments("PublicApi.xml");
             });
         }
 
